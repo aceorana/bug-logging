@@ -1,4 +1,4 @@
-package com.assignment.bug_logging;
+package com.assignment.bugLogging;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

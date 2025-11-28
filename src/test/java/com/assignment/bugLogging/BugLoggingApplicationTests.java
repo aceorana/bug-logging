@@ -1,4 +1,4 @@
-package com.assignment.bug_logging;
+package com.assignment.bugLogging;
 
 import org.junit.jupiter.api.Test;
 //import org.springframework.boot.test.context.SpringBootTest;

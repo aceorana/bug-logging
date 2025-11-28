@@ -1,4 +1,4 @@
-package com.assignment.bug_logging;
+package com.assignment.bugLogging;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
