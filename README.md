@@ -45,40 +45,42 @@ All primary settings are in:
 src/main/resources/application.properties
 
 ###### Database Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/bugtracker?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-spring.datasource.username=buguser
-spring.datasource.password=bugpass
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-
+ spring.datasource.url=jdbc:mysql://localhost:3306/bugtracker?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+ spring.datasource.username=buguser
+ spring.datasource.password=bugpass
+ spring.jpa.hibernate.ddl-auto=update
+ spring.jpa.show-sql=true
+ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+ 
 ###### JSP View Resolver
-spring.mvc.view.prefix=/WEB-INF/views/
-spring.mvc.view.suffix=.jsp
+ spring.mvc.view.prefix=/WEB-INF/views/
+ spring.mvc.view.suffix=.jsp
 
 ##### 3. Database Setup
 
 If using local MySQL, run:
 
-CREATE DATABASE bugtracker CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ CREATE DATABASE bugtracker CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-CREATE USER 'buguser'@'%' IDENTIFIED BY 'bugpass';
-GRANT ALL PRIVILEGES ON bugtracker.* TO 'buguser'@'%';
-FLUSH PRIVILEGES;
+ CREATE USER 'buguser'@'%' IDENTIFIED BY 'bugpass';
+
+ GRANT ALL PRIVILEGES ON bugtracker.* TO 'buguser'@'%';
+
+ FLUSH PRIVILEGES;
 
 ##### 4. Building the Project
 
 To compile and run all tests:
-mvn clean test
+* mvn clean test
 
 Build the JAR:
-mvn clean package
+* mvn clean package
 
 Run the application:
-mvn spring-boot:run
+* mvn spring-boot:run
 
 Server starts at:
-http://localhost:8080
+* http://localhost:8080
 
 ##### 5. Project Structure Overview
 

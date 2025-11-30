@@ -19,18 +19,6 @@ public class BugViewController {
         return "bug-list";
     }
 
-//    @GetMapping("/bugs")
-//    @ResponseBody
-//    public String showBugListPage(Model model) {
-//        return "Bugs mapping is working. apiBaseUrl = " + apiBaseUrl;
-//    }
-
-//    @GetMapping("/")
-//    public String home() {
-//        // option A: redirect so the browser URL becomes /bugs
-//        return "redirect:/bugs";
-//    }
-
     @GetMapping("/test")
     @ResponseBody
     public String test() {
