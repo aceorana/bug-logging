@@ -96,4 +96,20 @@ public class BugControllerTest {
                 .andExpect(jsonPath("$[0].severity", is("HIGH")));
     }
 
+    @Test
+    void createBug_missingTitle_shouldReturn400() throws Exception {
+        String json = """
+        {
+          "title": "",
+          "description": "desc",
+          "severity": "HIGH"
+        }
+        """;
+
+        mockMvc.perform(post("/api/bugs")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest());
+    }
+
 }

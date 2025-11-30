@@ -81,7 +81,7 @@
 <h1>Bug Logging System</h1>
 
 <h2>Report a Bug</h2>
-<form id="bug-form">
+<form id="bugForm">
     <label for="title">Title</label>
     <input type="text" id="title" name="title" required/>
 
@@ -105,10 +105,12 @@
     </select>
 
     <br/>
-    <button type="submit">Submit Bug</button>
+    <button type="submit" id="submitBtn">Submit Bug</button>
 
+    <div id="error-messages" style="color:red; margin-bottom:10px;"></div>
     <div id="message" class=""></div>
 </form>
+
 
 <div class="filter-container">
     <label for="severityFilter"><strong>Filter by severity:</strong></label>
@@ -190,37 +192,39 @@
         loadBugs();
 
         // Handle form submit: POST /api/bugs
-        $('#bug-form').on('submit', function (event) {
-            event.preventDefault(); // stop normal page submit
+    $("#bugForm").submit(function (e) {
+        e.preventDefault();
 
-            $message.removeClass('error success').text('');
+        $("#submitBtn").prop("disabled", true).text("Saving...");
 
-            var bugData = {
-                title: $('#title').val(),
-                description: $('#description').val(),
-                severity: $('#severity').val(),
-                status: $('#status').val()
-            };
-
-            $.ajax({
-                url: API_BASE_URL + '/api/bugs',
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(bugData)
-            })
-                .done(function (savedBug) {
-                    $message.addClass('success').text('Bug saved successfully (ID: ' + savedBug.id + ').');
-
-                    // Clear form
-                    $('#bug-form')[0].reset();
-
-                    // Reload table
-                    loadBugs();
-                })
-                .fail(function (jqXHR) {
-                    console.error('Error saving bug', jqXHR);
-                    $message.addClass('error').text('Failed to save bug. Please try again.');
-                });
+        $.ajax({
+            url: API_BASE_URL + "/api/bugs",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                title: $("#title").val(),
+                description: $("#description").val(),
+                severity: $("#severity").val(),
+                status: $("#status").val()
+                }),
+            success: function () {
+                $("#error-messages").empty();
+                loadBugs();
+                $("#bugForm")[0].reset();
+                },
+            error: function (xhr) {
+                const errors = xhr.responseJSON;
+                let html = "<ul>";
+                for (const field in errors) {
+                    html += "<li>" + errors[field] + "</li>";
+                    }
+                html += "</ul>";
+                $("#error-messages").html(html);
+                },
+            complete: function () {
+                $("#submitBtn").prop("disabled", false).text("Submit Bug");
+                }
+            });
         });
 
         // Handle severity filter change
@@ -228,6 +232,7 @@
             loadBugs();
         });
     });
+
 </script>
 
 </body>

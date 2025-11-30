@@ -3,6 +3,7 @@ package com.assignment.bugLogging.controller;
 import com.assignment.bugLogging.domain.Bug;
 import com.assignment.bugLogging.domain.Severity;
 import com.assignment.bugLogging.service.BugService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class BugController {
     }
 
     @PostMapping
-    public ResponseEntity<Bug> createBug(@RequestBody Bug bug) {
+    public ResponseEntity<Bug> createBug(@Valid @RequestBody Bug bug) {
         Bug saved = bugService.createBug(bug);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }

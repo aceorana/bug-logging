@@ -1,6 +1,8 @@
 package com.assignment.bugLogging.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -12,16 +14,20 @@ public class Bug {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title is required.")
     @Column(name = "title", nullable = false, length = 200)
     private String title;
 
+    @NotBlank(message = "Description is required")
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @NotNull(message = "Status is required.")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Status status = Status.OPEN;
 
+    @NotNull(message = "Severity is required.")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Severity severity;
