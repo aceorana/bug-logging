@@ -13,6 +13,7 @@
     </parent>
 
     <groupId>com.assignment</groupId>
+    <packaging>war</packaging>
     <artifactId>bug-logging</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bug-logging</name>
