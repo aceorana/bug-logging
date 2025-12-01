@@ -191,9 +191,13 @@
         // Initial load
         loadBugs();
 
-        // Handle form submit: POST /api/bugs
+    // Handle form submit: POST /api/bugs
     $("#bugForm").submit(function (e) {
         e.preventDefault();
+
+        // Clear previous messages
+        $("#message").removeClass("success error").text("");
+        $("#error-messages").empty();
 
         $("#submitBtn").prop("disabled", true).text("Saving...");
 
@@ -206,26 +210,44 @@
                 description: $("#description").val(),
                 severity: $("#severity").val(),
                 status: $("#status").val()
-                }),
-            success: function () {
+            }),
+            success: function (savedBug) {
+                // Clear any previous errors
                 $("#error-messages").empty();
+
+                // Show success message
+                $("#message")
+                    .removeClass("error")
+                    .addClass("success")
+                    .text("Bug saved successfully (ID: " + (savedBug.id || "") + ").");
+
+                // Refresh table and reset form
                 loadBugs();
                 $("#bugForm")[0].reset();
-                },
+            },
             error: function (xhr) {
+                // Show a generic message
+                $("#message")
+                    .removeClass("success")
+                    .addClass("error")
+                    .text("Failed to save bug. Please fix the errors and try again.");
+
                 const errors = xhr.responseJSON;
                 let html = "<ul>";
                 for (const field in errors) {
-                    html += "<li>" + errors[field] + "</li>";
+                    if (Object.prototype.hasOwnProperty.call(errors, field)) {
+                        html += "<li>" + errors[field] + "</li>";
                     }
+                }
                 html += "</ul>";
                 $("#error-messages").html(html);
-                },
+            },
             complete: function () {
                 $("#submitBtn").prop("disabled", false).text("Submit Bug");
-                }
-            });
+            }
         });
+    });
+
 
         // Handle severity filter change
         $('#severityFilter').on('change', function () {
