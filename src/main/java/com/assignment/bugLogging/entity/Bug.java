@@ -1,4 +1,4 @@
-package com.assignment.bugLogging.domain;
+package com.assignment.bugLogging.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

@@ -45,16 +45,16 @@ All primary settings are in:
 src/main/resources/application.properties
 
 ###### Database Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/bugtracker?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-spring.datasource.username=buguser
-spring.datasource.password=bugpass
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+* spring.datasource.url=jdbc:mysql://localhost:3306/bugtracker?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+* spring.datasource.username=buguser
+* spring.datasource.password=bugpass
+* spring.jpa.hibernate.ddl-auto=update
+* spring.jpa.show-sql=true
+* spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 ###### JSP View Resolver
-spring.mvc.view.prefix=/WEB-INF/views/
-spring.mvc.view.suffix=.jsp
+* spring.mvc.view.prefix=/WEB-INF/views/
+* spring.mvc.view.suffix=.jsp
 
 ##### 3. Database Setup
 
@@ -83,22 +83,7 @@ Server starts at:
 * http://localhost:8080
 
 ##### 5. Project Structure Overview
-
-   src/
-   ├─ main/
-   │   ├─ java/com/example/bugtracker/
-   │   │    ├─ entity/        → JPA entity (Bug)
-   │   │    ├─ repository/    → BugRepository (JPA)
-   │   │    ├─ service/       → BugService (business logic)
-   │   │    ├─ controller/    → REST API + View controller
-   │   ├─ resources/
-   │   │    ├─ application.properties
-   │   └─ webapp/WEB-INF/views/
-   │        └─ bug-list.jsp   → Main UI
-   └─ test/
-   ├─ unit tests (JUnit/Mockito)
-   └─ integration tests (Data JPA / SpringBootTest)
-
+![img_1.png](img_1.png)
 ##### 6. REST API Documentation
 
 ###### POST /api/bugs

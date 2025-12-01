@@ -1,7 +1,7 @@
 package com.assignment.bugLogging.controller;
 
-import com.assignment.bugLogging.domain.Bug;
-import com.assignment.bugLogging.domain.Severity;
+import com.assignment.bugLogging.entity.Bug;
+import com.assignment.bugLogging.entity.Severity;
 import com.assignment.bugLogging.service.BugService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.List;
 

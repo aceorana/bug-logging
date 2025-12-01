@@ -1,7 +1,7 @@
 package com.assignment.bugLogging.controller;
 
-import com.assignment.bugLogging.domain.Bug;
-import com.assignment.bugLogging.domain.Severity;
+import com.assignment.bugLogging.entity.Bug;
+import com.assignment.bugLogging.entity.Severity;
 import com.assignment.bugLogging.service.BugService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

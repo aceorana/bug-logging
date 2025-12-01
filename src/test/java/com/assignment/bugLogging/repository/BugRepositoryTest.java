@@ -2,9 +2,9 @@ package com.assignment.bugLogging.repository;
 
 import java.util.List;
 
-import com.assignment.bugLogging.domain.Bug;
-import com.assignment.bugLogging.domain.Severity;
-import com.assignment.bugLogging.domain.Status;
+import com.assignment.bugLogging.entity.Bug;
+import com.assignment.bugLogging.entity.Severity;
+import com.assignment.bugLogging.entity.Status;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

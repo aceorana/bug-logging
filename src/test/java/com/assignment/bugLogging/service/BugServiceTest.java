@@ -1,9 +1,8 @@
 package com.assignment.bugLogging.service;
 
-import com.assignment.bugLogging.domain.Bug;
-import com.assignment.bugLogging.domain.Severity;
+import com.assignment.bugLogging.entity.Bug;
+import com.assignment.bugLogging.entity.Severity;
 import com.assignment.bugLogging.repository.BugRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

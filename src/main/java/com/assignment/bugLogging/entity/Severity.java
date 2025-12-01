@@ -1,4 +1,4 @@
-package com.assignment.bugLogging.domain;
+package com.assignment.bugLogging.entity;
 
 public enum Severity {
     LOW,

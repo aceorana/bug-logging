@@ -1,7 +1,7 @@
 package com.assignment.bugLogging.service;
 
-import com.assignment.bugLogging.domain.Bug;
-import com.assignment.bugLogging.domain.Severity;
+import com.assignment.bugLogging.entity.Bug;
+import com.assignment.bugLogging.entity.Severity;
 
 import java.util.List;
 
