@@ -120,7 +120,7 @@ The frontend uses:
     var API_BASE_URL = '${apiBaseUrl}';
     </script>
 
-This allows the frontend and backend to run on different VMs, which is required by the reviewers.
+This allows the frontend and backend to run on different VMs as required.
 
 ### 8. Running with Docker
 
