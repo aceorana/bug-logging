@@ -21,7 +21,7 @@ Technologies used:
 * JUnit 5 + Mockito + Spring Test
 * Docker Compose (MySQL + application)
 
-##### 1. Getting Started
+### 1. Getting Started
 
 This section helps a new developer install tools, build the project, and run it locally or via Docker.
 
@@ -35,11 +35,11 @@ Ensure the following are installed:
 
 ###### 1.2 Clone the repository
 
-git clone <YOUR_REPO_URL>
+git clone https://github.com/aceorana/bug-logging/
 
-cd bug-logging-system
+cd bug-logging
 
-##### 2. Configuration
+### 2. Configuration
 
 All primary settings are in:
 src/main/resources/application.properties
@@ -56,7 +56,7 @@ src/main/resources/application.properties
 * spring.mvc.view.prefix=/WEB-INF/views/
 * spring.mvc.view.suffix=.jsp
 
-##### 3. Database Setup
+### 3. Database Setup
 
 If using local MySQL, run:
 
@@ -68,12 +68,12 @@ If using local MySQL, run:
 
  FLUSH PRIVILEGES;
 
-##### 4. Building the Project
+### 4. Building the Project
 
 To compile and run all tests:
 * mvn clean test
 
-Build the JAR:
+Build the WAR:
 * mvn clean package
 
 Run the application:
@@ -82,9 +82,9 @@ Run the application:
 Server starts at:
 * http://localhost:8080
 
-##### 5. Project Structure Overview
-![img_1.png](img_1.png)
-##### 6. REST API Documentation
+### 5. Project Structure Overview
+![img_1.png](proj_structure.png)
+### 6. REST API Documentation
 
 ###### POST /api/bugs
 Create a new bug.
@@ -97,17 +97,17 @@ Create a new bug.
 "status": "OPEN"
 }
 
-##### Responses:
+###### Responses:
 201 Created – Bug saved
 400 Bad Request – Validation failed
 
-##### GET /api/bugs
+###### GET /api/bugs
 Returns all bugs.
 
-##### GET /api/bugs?severity=HIGH
+###### GET /api/bugs?severity=HIGH
 Returns filtered bugs by severity.
 
-##### 7. Frontend (JSP + jQuery AJAX)
+### 7. Frontend (JSP + jQuery AJAX)
 The frontend uses:
 * bug-list.jsp
 * jQuery AJAX for: 
@@ -116,28 +116,30 @@ The frontend uses:
   * Severity dropdown filter
 
 ###### Configurable server URL:
-  var API_BASE_URL = '${apiBaseUrl}';
+    <script>
+    var API_BASE_URL = '${apiBaseUrl}';
+    </script>
 
 This allows the frontend and backend to run on different VMs, which is required by the reviewers.
 
-##### 8. Running with Docker
+### 8. Running with Docker
 
 This project includes Docker support (app + MySQL).
 
-###### 8.1 Build app JAR
-mvn clean package
+###### 8.1 Build app WAR
+    mvn clean package
 
 ###### 8.2 Start containers
-docker-compose up --build
+    docker-compose up --build
 
 ###### Services started:
 Service and	URL 
 * MySQL   :	localhost:3306 
-* App     : 	http://localhost:8080
+* App     : http://localhost:8080
 
 The Docker Compose file includes health checks so the app waits until MySQL is ready.
 
-##### 9. Testing
+### 9. Testing
 ######    Unit Tests
 * BugServiceTest 
 * BugControllerTest (using MockMvc)
@@ -150,29 +152,29 @@ The Docker Compose file includes health checks so the app waits until MySQL is r
 * Optional Testcontainers-based tests (disabled if Docker not running)
 
 ###### Run all tests:
-mvn clean verify
+    mvn clean verify
 
-##### 10. How Client–Server Configuration Works
+### 10. How Client–Server Configuration Works
 * Server on VM A (e.g., 10.10.1.5)
 * Client/UI on VM B (e.g., 10.10.1.9)
 
 To configure:
 
-In a controller or properties file:
+In application.properties file:
 
-model.addAttribute("apiBaseUrl", "http://10.10.1.5:8080");
+api.base-url=http://10.10.1.5:8080
 
-This allows cross-VM execution as required in the assignment spec.
+This allows cross-VM execution as required in the spec.
 
-##### 11. CI/CD Notes (GitHub Actions)
+### 11. CI/CD Notes (GitHub Actions)
 
-A default workflow is included (or can easily be added):
+A default workflow is included:
 * Runs on every push
 * Builds using Maven Wrapper (mvnw)
 * Runs tests
 * Ensures the project is buildable on fresh environments
 
-##### 12. Troubleshooting
+### 12. Troubleshooting
 ###### MySQL connection issue
 Check:
 * MySQL is running
@@ -185,6 +187,7 @@ Check:
 * View resolver prefix/suffix
 * JSP located under WEB-INF/views
 * Controller returning correct view name
+* JSP dependencies are in the pom file.
 
 ###### Testcontainers failing in CI
 
@@ -192,7 +195,7 @@ CI may not have Docker-in-Docker enabled.
 
 Tests can be disabled via:
 * @DisabledIfEnvironmentVariable(named = "CI", matches = "true")
-* or using conditional disabledWithoutDocker.
+* or using conditional disabledWithoutDocker (used in this project at BugIntegrationTest.java.
 
-##### 13. License
+### 13. License
 This project is for technical assessment and educational use.
