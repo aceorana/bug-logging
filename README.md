@@ -135,7 +135,7 @@ This project includes Docker support (app + MySQL).
 ###### Services started:
 Service and	URL 
 * MySQL   :	localhost:3306 
-* App     : http://localhost:8080
+* App     : http://localhost:8080/
 
 The Docker Compose file includes health checks so the app waits until MySQL is ready.
 

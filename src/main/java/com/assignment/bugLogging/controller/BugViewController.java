@@ -19,6 +19,11 @@ public class BugViewController {
         return "bug-list";
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/bugs";
+    }
+
     @GetMapping("/test")
     @ResponseBody
     public String test() {
